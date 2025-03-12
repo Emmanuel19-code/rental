@@ -1,9 +1,10 @@
+import { createNewUserInDatabase } from "@/lib/utils";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    baseUrl: "http://localhost:5208",
     prepareHeaders: async (headers)=>{
        const session = await fetchAuthSession();
        const {idToken } = session.tokens ?? {}
@@ -30,12 +31,13 @@ export const api = createApi({
               ? `/managers/${user.userId}`
               : `/tenants/${user.userId}`;
 
-          const userDetailsResponse = await fetchWithBQ(endpoint);
+          let userDetailsResponse = await fetchWithBQ(endpoint);
           console.log(userDetailsResponse);
-           //if(userDetailsResponse.error && userDetailsResponse.error.status === 404 )
-           //{
-           //  userDetailsResponse = await ();
-           //}
+          //&& userDetailsResponse.error.status === 404
+           if(userDetailsResponse.error  )
+           {
+              userDetailsResponse = await createNewUserInDatabase(user,idToken,userRole,fetchWithBQ);
+           }
             return {
                data:{
                  cognitoInfo: {...user},
@@ -51,4 +53,6 @@ export const api = createApi({
   }),
 });
 
-export const {} = api;
+export const {
+  useGetAuthUserQuery
+} = api;
