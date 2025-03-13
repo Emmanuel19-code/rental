@@ -62,7 +62,7 @@ export const createNewUserInDatabase = async (
   userRole: string,
   fetchWithBQ: any
 ) => {
-  console.log("this is userRole",userRole);
+ // console.log("this is userRole",userRole);
   
   const createEndpoint =
     userRole?.toLowerCase() === "manager" ? "/managers" : "http://localhost:5208/tenants/add_tenant";
@@ -71,13 +71,13 @@ export const createNewUserInDatabase = async (
     url: createEndpoint,
     method: "POST",
     body: {
-      cognitoId: user.userId,
-      name: user.username,
-      email: idToken?.payload?.email || "",
-      phoneNumber: "",
+      CognitoId: user.userId,
+      Name: user.username,
+      Email: idToken?.payload?.email || "",
+      PhoneNumber: "",
     },
   });
-
+  console.log("error",createUserResponse.error)
   if (createUserResponse.error) {
     throw new Error("Failed to create user record");
   }

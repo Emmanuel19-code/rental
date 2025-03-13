@@ -32,7 +32,7 @@ export const api = createApi({
               : `/tenants/${user.userId}`;
 
           let userDetailsResponse = await fetchWithBQ(endpoint);
-          console.log(userDetailsResponse);
+          console.log("details",userDetailsResponse);
           //&& userDetailsResponse.error.status === 404
            if(userDetailsResponse.error  )
            {
