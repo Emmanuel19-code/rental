@@ -65,7 +65,7 @@ export const createNewUserInDatabase = async (
  // console.log("this is userRole",userRole);
   
   const createEndpoint =
-    userRole?.toLowerCase() === "manager" ? "/managers" : "http://localhost:5208/tenants/add_tenant";
+    userRole?.toLowerCase() === "manager" ? "http://localhost:5208/managers/add_manager" : "http://localhost:5208/tenants/add_tenant";
 
   const createUserResponse = await fetchWithBQ({
     url: createEndpoint,

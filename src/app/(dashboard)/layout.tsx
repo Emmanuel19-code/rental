@@ -37,7 +37,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div>
           <main className="flex">
            <AppSidebar userType={authUser?.userRole.toLowerCase()}/>
-            <div className="flex-grow transition-all duration-300"></div>
+            <div className="flex-grow transition-all duration-300">
+               {children}
+            </div>
           </main>
         </div>
       </div>
