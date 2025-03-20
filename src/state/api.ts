@@ -79,19 +79,19 @@ export const api = createApi({
     >({
       query: (filters) => {
         const params = cleanParams({
-          location: filters.location,
-          priceMin: filters.priceRange?.[0],
-          priceMax: filters.priceRange?.[1],
-          beds: filters.beds,
-          baths: filters.baths,
-          propertyType: filters.propertyType,
-          squareFeetMin: filters.squareFeet?.[0],
-          squareFeetMax: filters.squareFeet?.[1],
-          amenities: filters.amenities?.join(","),
-          availableFrom: filters.availableFrom,
-          favoriteIds: filters.favoriteIds?.join(","),
-          latitude: filters.coordinates?.[1],
-          longitude: filters.coordinates?.[0],
+          Location: filters.location,
+          PriceMin: filters.priceRange?.[0],
+          PriceMax: filters.priceRange?.[1],
+          Beds: filters.beds,
+          Baths: filters.baths,
+          PropertyType: filters.propertyType,
+          SquareFeetMin: filters.squareFeet?.[0],
+          SquareFeetMax: filters.squareFeet?.[1],
+          Amenities: filters.amenities?.join(","),
+          AvailableFrom: filters.availableFrom,
+          FavoriteIds: filters.favoriteIds?.join(","),
+          Latitude : filters.coordinates?.[1],
+          Longitude: filters.coordinates?.[0],
         });
 
         return { url: "properties", params };

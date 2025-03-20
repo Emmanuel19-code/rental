@@ -62,7 +62,7 @@ const FiltersFull = () => {
         : [...prev.amenities, amenity],
     }));
   };
-
+  console.log(localFilters);
   const handleLocationSearch = async () => {
     try {
       const response = await fetch(
