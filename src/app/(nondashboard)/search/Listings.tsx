@@ -19,6 +19,7 @@ import {
         skip: !authUser?.cognitoInfo?.userId,
       }
     );
+    console.log("tenants",tenant)
     const [addFavorite] = useAddFavoritePropertyMutation();
     const [removeFavorite] = useRemoveFavoritePropertyMutation();
     const viewMode = useAppSelector((state) => state.global.viewMode);
